@@ -39,16 +39,43 @@ const enrollments = [
     { course_id: 2, student_id: 2 }
   ]
 
- const loop = () => {
-    let message = ``
+ const courseEnrollment = () => {
     for (let i = 0; i < courses.length; i++) {
-        for (let j = 0; j < enrollments.length; j++) {
-            if (courses[i]._id === enrollments[j].course_id && enrollments[j].student_id === students[i]._id) {
-                message += (`- ${courses[i].title}
-    * ${students[i].name}`)
+        console.log(`- ${courses[i].title}`);
+
+        for(let k = 0; k < students.length; k++){
+    
+            for (let j = 0; j < enrollments.length; j++) {
+                if (enrollments[j].course_id === courses[i]._id && enrollments[j].student_id === students[k]._id) {
+                    console.log(` * ${students[k].name}`);
+                }
             }
+
         }
     }
-    return message
  }
-console.log(loop());
+courseEnrollment();
+
+// Imprimir los estudiantes y los cursos a los que están matriculados con el siguiente formato:
+// - Pedro Perez
+//   * JavaScript I
+//   * HTML y CSS I
+// - Maria Gomez
+//   * HTML y CSS I
+
+const stundentCourse = () => {
+    for (let i = 0; i < students.length; i++) {
+        console.log(`- ${students[i].name}`);
+
+        for(let k = 0; k < courses.length; k++){
+    
+            for (let j = 0; j < enrollments.length; j++) {
+                if (enrollments[j].course_id === courses[k]._id && enrollments[j].student_id === students[i]._id) {
+                    console.log(` * ${courses[k].title}`);
+                }
+            }
+
+        }
+    }
+ }
+stundentCourse();
